@@ -1,0 +1,227 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.16932502545858372 -0.31701884576261447 -0.9331817010554747 5.250663840707428
+  position -3.8595410142362794 -6.626517030824076 2.994685045026446
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 30 30
+  appearance PBRAppearance {
+    roughness 0.8
+    metalness 0
+  }
+}
+Robot {
+  translation 0 0 -0.15
+  children [
+    DEF front_right_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.55 -0.5 0.43
+      }
+      device [
+        RotationalMotor {
+          name "front_right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.55 -0.5 0.43
+        rotation 0 1 0 1.57
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.15
+              radius 0.25
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+          density -1
+          mass 1
+        }
+      }
+    }
+    DEF back_right_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.55 0.6 0.43
+      }
+      device [
+        RotationalMotor {
+          name "back_right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.55 0.6 0.43
+        rotation 0 1 0 1.57
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    DEF front_left_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.55 -0.5 0.43
+      }
+      device [
+        RotationalMotor {
+          name "front_left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.55 -0.5 0.43
+        rotation 0 1 0 1.57
+        children [
+          USE wheel
+        ]
+        name "solid(2)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    DEF back_left_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.55 0.6 0.43
+      }
+      device [
+        RotationalMotor {
+          name "back_left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.55 0.6 0.43
+        rotation 0 1 0 1.57
+        children [
+          USE wheel
+        ]
+        name "solid(3)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    DEF Mouth_Transform Transform {
+      translation 0 -1.01 0.6504
+      rotation 1 0 0 1.5699969142185435
+      scale 0.8 0.4 1
+      children [
+        Shape {
+          appearance Appearance {
+            texture ImageTexture {
+              url [
+                "C:/Users/Moeyn/Desktop/mouth.png"
+              ]
+              repeatS FALSE
+              repeatT FALSE
+              filtering 1
+            }
+          }
+          geometry Plane {
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    DEF Left_Eye Transform {
+      translation 0.25 -1 1.00054
+      rotation 1 0 0 1.57
+      children [
+        Transform {
+          translation -0.07 0.05 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.2
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.05
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance PBRAppearance {
+            roughness 0.2
+            metalness 0
+            emissiveColor 1 1 1
+          }
+          geometry Cylinder {
+            height 0.05
+            radius 0.15
+          }
+        }
+      ]
+    }
+    DEF Right_Eye Transform {
+      translation -0.25 -1 1.00054
+      rotation 1 0 0 1.57
+      children [
+        Transform {
+          translation 0.05 -0.05 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 0.2
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.05
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance PBRAppearance {
+            roughness 0.2
+            metalness 0
+            emissiveColor 1 1 1
+          }
+          geometry Cylinder {
+            height 0.05
+            radius 0.15
+          }
+        }
+      ]
+    }
+    DEF Body_Transform Transform {
+      translation 0 0 0.75
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9 0.3 0.3
+            metalness 0
+          }
+          geometry Box {
+            size 0.98 2 0.7
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE Body_Transform
+  physics Physics {
+    density -1
+    mass 0.5
+  }
+  controller "picker_robot"
+}
