@@ -20,6 +20,9 @@ right_ds.enable(timestep)
 right_motor = robot.getDevice("right_motor")
 left_motor = robot.getDevice("left_motor")
 
+left_led = robot.getDevice("left_led")
+right_led = robot.getDevice("right_led")
+
 right_motor.setPosition(float('inf'))
 right_motor.setVelocity(0)
 
@@ -50,15 +53,21 @@ def set_velocities(velocities):
     
     
 def move_straight():
+    right_led.set(1)
+    left_led.set(1)
     set_velocities((max_speed, max_speed))
     
     
 def rotate_left():
-    set_velocities((0, max_speed))
+    right_led.set(1)
+    left_led.set(2)
+    set_velocities((0, max_speed / 2))
     
     
 def rotate_right():
-    set_velocities((max_speed, 0))
+    right_led.set(2)
+    left_led.set(1)
+    set_velocities((max_speed / 2, 0))
 
 
 def stop():
@@ -111,8 +120,10 @@ def decide_state(state):
     global time_counter, current_load
     
     color = get_color_beneath(color_camera)
+    if color == 'red':
+        return 'finished'
     
-    if color == 'yellow' and state == 'free':
+    if color == 'magenta' and state == 'free':
         return 'waiting_load'
     if color == 'blue' and state == 'loaded':
         return 'waiting_unload'
@@ -141,7 +152,10 @@ def wait_for_timer():
     return False
 
 while robot.step(timestep) != -1:
-
+    if current_state == 'finished':
+        stop()
+        break
+    
     if wait_for_timer():
         continue
         
