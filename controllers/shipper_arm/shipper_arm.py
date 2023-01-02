@@ -72,16 +72,6 @@ def launch_load_unload():
     motors[1].setPosition(0)
     motors[2].setPosition(0)
 
-
-# You should insert a getDevice-like function in order to get the
-# instance of a device of the robot. Something like:
-#  motor = robot.getDevice('motorname')
-#  ds = robot.getDevice('dsname')
-#  ds.enable(timestep)
-
-# Main loop:
-# - perform simulation steps until Webots is stopping the controller
-
 print(len(gripper))
 while robot.step(timestep) != -1:
 
@@ -94,15 +84,4 @@ while robot.step(timestep) != -1:
         launch_load_unload()
         
       signal_receiver.nextPacket()
-      
-    # Read the sensors:
-    # Enter here functions to read sensor data, like:
-    #  val = ds.getValue()
-
-    # Process sensor data here.
-
-    # Enter here functions to send actuator commands, like:
-    #  motor.setPosition(10.0)
     pass
-
-# Enter here exit cleanup code.
