@@ -10,8 +10,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.20155114938879842 -0.917530575033333 0.3428042853569006 5.136434991987366
-  position -2.893987069652852 1.1063356489234697 4.088357919955617
+  orientation -0.3730849554633915 -0.4949252679142521 0.7847653121710241 4.748814716149701
+  position -1.63212693394077 2.9568240380875745 3.834105957684402
 }
 TexturedBackground {
 }
@@ -336,7 +336,7 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0 -0.025999999999999187 0.0075
+        translation 0 -0.025999999999999062 0.0075
         rotation -0.6748338065859028 0.6748336816069934 0.2986617412015329 3.722049969138062
         children [
           USE WHEEL
@@ -757,7 +757,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312645244014e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
+              rotation -2.763131264524396e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -1649,7 +1649,7 @@ Robot {
       }
     ]
   }
-  controller "arm_controller"
+  controller "shipper_arm"
   controllerArgs [
     "1l"
   ]
@@ -2001,7 +2001,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312645244014e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
+              rotation -2.763131264524396e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -2893,7 +2893,7 @@ Robot {
       }
     ]
   }
-  controller "arm_controller"
+  controller "shipper_arm"
   controllerArgs [
     "3l"
   ]
@@ -3245,7 +3245,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312631063623e-07 -0.9999999999999236 2.7653306878441266e-07 1.5700000000000762
+              rotation -2.7631312631063576e-07 -0.9999999999999236 2.765330687844122e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -4137,7 +4137,7 @@ Robot {
       }
     ]
   }
-  controller "arm_controller"
+  controller "shipper_arm"
   controllerArgs [
     "2l"
   ]
@@ -4488,7 +4488,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312636316006e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
+              rotation -2.7631312636315953e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -4598,7 +4598,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0.032 0.042 0
-                          rotation -0.577503019455213 -0.577503333287669 -0.5770443332723608 2.0934753135826956
+                          rotation -0.5775030194552129 -0.5775033332876689 -0.5770443332723607 2.0934753135826956
                           children [
                             Transform {
                               translation 0 0 0.0698
@@ -5380,7 +5380,7 @@ Robot {
       }
     ]
   }
-  controller "arm_controller"
+  controller "shipper_arm"
   controllerArgs [
     "1u"
   ]
@@ -5731,7 +5731,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312636316006e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
+              rotation -2.7631312636315953e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -5841,7 +5841,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0.032 0.042 0
-                          rotation -0.577503019455213 -0.577503333287669 -0.5770443332723608 2.0934753135826956
+                          rotation -0.5775030194552129 -0.5775033332876689 -0.5770443332723607 2.0934753135826956
                           children [
                             Transform {
                               translation 0 0 0.0698
@@ -6623,7 +6623,7 @@ Robot {
       }
     ]
   }
-  controller "arm_controller"
+  controller "shipper_arm"
   controllerArgs [
     "2u"
   ]
@@ -6975,7 +6975,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312636316006e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
+              rotation -2.7631312636315953e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -7085,7 +7085,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0.032 0.042 0
-                          rotation -0.577503019455213 -0.577503333287669 -0.5770443332723608 2.0934753135826956
+                          rotation -0.5775030194552129 -0.5775033332876689 -0.5770443332723607 2.0934753135826956
                           children [
                             Transform {
                               translation 0 0 0.0698
@@ -7867,7 +7867,7 @@ Robot {
       }
     ]
   }
-  controller "arm_controller"
+  controller "shipper_arm"
   controllerArgs [
     "3u"
   ]
