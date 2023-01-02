@@ -10,8 +10,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.3730849554633915 -0.4949252679142521 0.7847653121710241 4.748814716149701
-  position -1.63212693394077 2.9568240380875745 3.834105957684402
+  orientation 0.20138214309444344 0.41848708285319414 -0.8856149241785128 1.0230222133628208
+  position -2.5793106352650508 2.6748055787478076 1.5096392405538335
 }
 TexturedBackground {
 }
@@ -169,6 +169,64 @@ Robot {
   translation -0.937379 0.152627 -0.000629392
   rotation -0.0016480394081263927 -4.7321483005056364e-05 0.9999986408624697 -0.9173853071795861
   children [
+    Transform {
+      translation 0 0 0.02
+      rotation 0 0 1 1.5708
+      scale 0.01 0.01 0.01
+      children [
+        Transform {
+          translation 0 5.3 3.5
+          rotation 1 0 0 1.2472
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "Hand_Texture.png"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Mesh {
+                url [
+                  "hand.obj"
+                ]
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 3 2
+          rotation 1 0 0 -0.261795307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Cylinder {
+                height 5
+                radius 0.07
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 3.5 3.85
+          rotation 1 0 0 -0.261795307179586
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+              }
+              geometry Cylinder {
+                height 0.2
+                radius 0.2
+              }
+            }
+          ]
+        }
+      ]
+    }
     Group {
       children [
         LED {
@@ -216,7 +274,7 @@ Robot {
       ]
     }
     Emitter {
-      translation -0.025 0 0.01
+      translation -0.025 7.9659e-06 0.02
       rotation -0.5771968951617173 0.577656895078166 0.5771968951617173 -2.093935307179586
       children [
         Shape {
@@ -336,7 +394,7 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0 -0.025999999999999062 0.0075
+        translation 0 -0.025999999999999007 0.0075
         rotation -0.6748338065859028 0.6748336816069934 0.2986617412015329 3.722049969138062
         children [
           USE WHEEL
@@ -353,7 +411,14 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
-            baseColor 0.015 0.48 0.1796
+            baseColorMap ImageTexture {
+              url [
+                "robot_texture.png"
+              ]
+              repeatS FALSE
+              repeatT FALSE
+              filtering 5
+            }
             roughness 0.4
             metalness 0
           }
@@ -757,7 +822,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.763131264524396e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
+              rotation -2.763131264524394e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -2001,7 +2066,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.763131264524396e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
+              rotation -2.763131264524394e-07 -0.9999999999999236 2.7653306892633256e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -3245,7 +3310,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312631063576e-07 -0.9999999999999236 2.765330687844122e-07 1.5700000000000762
+              rotation -2.7631312631063554e-07 -0.9999999999999236 2.76533068784412e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -4488,7 +4553,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312636315953e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
+              rotation -2.763131263631593e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -5731,7 +5796,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312636315953e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
+              rotation -2.763131263631593e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
@@ -6975,7 +7040,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.065
-              rotation -2.7631312636315953e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
+              rotation -2.763131263631593e-07 -0.9999999999999236 2.7653306883698133e-07 1.5700000000000762
               children [
                 Transform {
                   rotation 0 0 -1 1.57
