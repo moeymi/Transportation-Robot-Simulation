@@ -72,7 +72,6 @@ def launch_load_unload():
     motors[1].setPosition(0)
     motors[2].setPosition(0)
 
-print(len(gripper))
 while robot.step(timestep) != -1:
 
     load_sign = sys.argv[1]
