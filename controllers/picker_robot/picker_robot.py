@@ -36,8 +36,6 @@ emitter = robot.getDevice("signal_emitter")
 
 prev_state = current_state = 'free'
 
-time_counter = (0, 0)
-
 current_load = 1
 
 def round_color(value):
@@ -45,6 +43,21 @@ def round_color(value):
         return 0
     else:
         return 255
+        
+def step(func):
+  if robot.step(timestep) == -1:
+    exit(0)
+  if func is not None:
+      func()
+  pass
+
+
+
+
+def wait_until_seconds(secs, func = None):
+  start_time = robot.getTime()
+  while start_time + secs > robot.getTime():
+    step(func)
 
 
 def set_velocities(velocities):
@@ -69,6 +82,10 @@ def rotate_right():
     left_led.set(1)
     set_velocities((max_speed / 2, 0))
 
+def rotate_in_place():
+    right_led.set(2)
+    left_led.set(1)
+    set_velocities((max_speed / 2, -max_speed / 2))
 
 def stop():
     set_velocities((0, 0))
@@ -120,7 +137,13 @@ def decide_state(state):
     global time_counter, current_load
     
     color = get_color_beneath(color_camera)
-    if color == 'red':
+    
+    if color == 'red' and state != 'back':
+        wait_until_seconds(3, rotate_in_place)
+        return 'back'
+        
+    if color == 'lime' and current_load > 1:
+        print("hi")
         return 'finished'
     
     if color == 'magenta' and state == 'free':
@@ -131,33 +154,23 @@ def decide_state(state):
     load_dist = ds.getValue()
     
     if state == 'waiting_load' and load_dist < 500:
-        time_counter = (robot.getTime(), 3)
+        wait_until_seconds(3)
         return 'loaded'
          
     if state == 'waiting_unload' and load_dist > 500:
-        time_counter = (robot.getTime(), 3)
+        wait_until_seconds(3)
         current_load+=1
         return 'free'
         
     return state
 
-def wait_for_timer():
-    global time_counter
-    if time_counter[1] > 0:
-        if robot.getTime() - time_counter[0] <= time_counter[1]:
-            return True
-        else:
-            time_counter = (0, 0)
-            
-    return False
-
 while robot.step(timestep) != -1:
+    if current_state == 'back':
+        follow_line()
+    
     if current_state == 'finished':
         stop()
         break
-    
-    if wait_for_timer():
-        continue
         
     decide_on_state(prev_state, current_state)
     
